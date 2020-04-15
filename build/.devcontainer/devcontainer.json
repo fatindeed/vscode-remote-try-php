@@ -1,0 +1,31 @@
+// See https://aka.ms/vscode-remote/containers for the
+// documentation about the devcontainer.json format
+{
+    // General configurations
+    "name": "PHP Sample",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "php",
+    "workspaceFolder": "/workspace",
+    "shutdownAction": "stopCompose",
+
+    // Use 'settings' to set *default* container specific settings.json values on container create. 
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+        
+    // Add the IDs of extensions you want installed when the container is created in the array below.
+    "extensions": [
+        "felixfbecker.php-debug",
+        "felixfbecker.php-intellisense"
+    ],
+
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
+
+    // Use 'postCreateCommand' to run commands after the container is created.
+    // "postCreateCommand": "php -v",
+    "postCreateCommand": "bash /workspace/.devcontainer/init.sh",
+
+    // Comment out if you want to use root
+    "remoteUser": "vscode"
+}
